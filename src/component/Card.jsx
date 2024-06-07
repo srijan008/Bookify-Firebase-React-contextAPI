@@ -1,7 +1,7 @@
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useFirebase } from '../context/Firebase';
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function BasicExample(props) {
@@ -19,6 +19,8 @@ function BasicExample(props) {
             } catch (err) {
                 console.error("Error fetching image URL:", err);
                 setError(err.message);
+            } finally {
+                setLoading(false);  // Ensure loading is set to false after fetch attempt
             }
         };
 
